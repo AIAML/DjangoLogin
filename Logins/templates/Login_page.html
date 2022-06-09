@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-
-
-
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
                     {% if state == "failed" %}
-                        <div class="alert alert-danger" role="alert">
+                        <div class="btn alert alert-danger" role="alert">
                             Please Check Your Inputs
                         </div>
                     {% endif %}

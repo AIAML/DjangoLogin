@@ -19,6 +19,6 @@ from Logins.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('Logins/', include('Logins.urls'),name="home"),
+    path('Logins/', include('Logins.urls')),
     path('', LoginView.as_view(), name='home'),
 ]
