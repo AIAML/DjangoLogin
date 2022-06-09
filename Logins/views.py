@@ -9,8 +9,6 @@ class LoginView(View):
 
     def get(self, request, *args, **kwargs):
         # GET Method
-        #obj = get_object_or_404(Loginmodels)
-        form = LoginModelForm()
         context = {}
 
         return render(request, self.template_name, context)
