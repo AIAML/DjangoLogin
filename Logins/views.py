@@ -47,7 +47,6 @@ class RegisterView(View):
             except:
                 obj = None
                 context['state'] = 'failed'
-        # form.save()
 
         return render(request, self.template_name, context)
 
