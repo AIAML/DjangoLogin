@@ -38,8 +38,14 @@ class RegisterView(View):
     def post(self, request, *args, **kwargs):
         # POST Method
         form = LoginModelForm(request.POST)
+        context = {}
         if form.is_valid():
-            context = {}
+            if request.POST['repassword'] != form.cleaned_data['password']:
+                context['state'] = '1'
+            elif len(form.cleaned_data['password']) < 3:
+                context['state'] = '2'
+            elif len(request.POST['password'])< 3:
+                context['state'] = '3'
             try:
                 obj = get_object_or_404(Loginmodels,username=form.cleaned_data['username'],password=form.cleaned_data['password'])
                 print(obj.username)
