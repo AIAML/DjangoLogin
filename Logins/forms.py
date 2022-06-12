@@ -4,4 +4,4 @@ from .models import Loginmodels
 class LoginModelForm (forms.ModelForm):
     class Meta:
         model = Loginmodels
-        fields = ['username','password']
+        fields = ['username','password','email','fullname']

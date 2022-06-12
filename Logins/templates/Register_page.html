@@ -5,9 +5,29 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    {% if state == "failed" %}
+                    {% if state == "-1" %}
                         <div class="btn alert alert-danger" role="alert">
-                            Please Check Your Inputs
+                            Please Check Inputs
+                        </div>
+                    {% elif state == "1" %}
+                        <div class="btn alert alert-danger" role="alert">
+                            Password and Confirmation don't match
+                        </div>
+                    {% elif state == "2" %}
+                        <div class="btn alert alert-danger" role="alert">
+                            Please Enter minimum 3 character for password
+                        </div>
+                    {% elif state == "3" %}
+                        <div class="btn alert alert-danger" role="alert">
+                            Please Enter minimum 3 character for username
+                        </div>
+                    {% elif state == "4" %}
+                        <div class="btn alert alert-danger" role="alert">
+                            This Username exists
+                        </div>
+                    {% elif state == "5" %}
+                        <div class="btn alert alert-success" role="alert">
+                            User has been created
                         </div>
                     {% endif %}
                     <img src="{% static 'img/login.png' %}  " alt="IMG">
@@ -22,7 +42,7 @@
                     </span>
                 </div>
                     <div class="wrap-input100 validate-input" data-validate="Please Enter Username">
-                    <input class="input100" id="username" type="email" name="email" value="" placeholder="email">
+                    <input class="input100" id="email" type="email" name="email" value="" placeholder="email">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-user" aria-hidden="true"></i>
@@ -37,6 +57,13 @@
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Please Enter Password">
                         <input id="repassword" type="password" name="repassword" value="" class="input100" placeholder="Re-Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Please Enter Password">
+                        <input id="fullname" type="text" name="fullname" value="" class="input100" placeholder="fullname">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>

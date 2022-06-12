@@ -44,15 +44,17 @@ class RegisterView(View):
                 context['state'] = '1'
             elif len(form.cleaned_data['password']) < 3:
                 context['state'] = '2'
-            elif len(request.POST['password'])< 3:
+            elif len(form.cleaned_data['username']) < 3:
                 context['state'] = '3'
-            try:
-                obj = get_object_or_404(Loginmodels,username=form.cleaned_data['username'],password=form.cleaned_data['password'])
-                print(obj.username)
-                context['state'] = 'success'
-            except:
-                obj = None
-                context['state'] = 'failed'
-
+            else:
+                try:
+                    obj = get_object_or_404(Loginmodels,username=form.cleaned_data['username'])
+                    context['state'] = '4'
+                except:
+                    obj = None
+                    form.save()
+                    context['state'] = '5'
+        else:
+            context['state'] = '-1'
         return render(request, self.template_name, context)
 
