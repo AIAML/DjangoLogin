@@ -10,4 +10,3 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name="register"),
     path('mainpage/', MainPageView.as_view(), name="main"),
 ]
-

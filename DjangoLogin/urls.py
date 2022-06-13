@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^$', LoginView.as_view(), name='home'),
     url(r'^register/$', RegisterView.as_view(), name='register-link'),
     path('mainpage/', MainPageView.as_view(), name="main"),
+    path('login/', LoginView.as_view(), name="main"),
 ]
