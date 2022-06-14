@@ -64,7 +64,6 @@ class MainPageView(View):
 
     def get(self, request, *args, **kwargs):
         # GET Method
-
         try:
             print("test")
             print(request.COOKIES.get('login_stamp'))
