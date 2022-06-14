@@ -6,12 +6,34 @@ from .models import Loginmodels
 from http import cookies
 import datetime
 
+
+class LoginoutView(View):
+    template_name = "Login_page.html"
+    def get(self, request, *args, **kwargs):
+        response = redirect('/login/')
+        set_cookie(response, 'login_stamp', 'valid', -1)
+        return response
+
+
 class LoginView(View):
     template_name = "Login_page.html"
 
     def get(self, request, *args, **kwargs):
-        # GET Method
         context = {}
+        try:
+            print("test")
+            print(request.COOKIES.get('login_stamp'))
+            if request.COOKIES.get('login_stamp') == "valid":
+                response = redirect('/mainpage/')
+                set_cookie(response, 'login_stamp', 'valid')
+                return response
+            else:
+                return render(request, self.template_name, context)
+        except:
+            obj = None
+            return render(request, self.template_name, context)
+
+        # GET Method
         context['state'] = 'firsttime'
         return render(request, self.template_name, context)
 
@@ -28,7 +50,7 @@ class LoginView(View):
                 # response = HttpResponse('blah')
                 # response.setcookie('login_stamp', 'valid')
                 response = redirect('/mainpage/')
-                set_cookie(response,'login_stamp', 'valid')
+                set_cookie(response, 'login_stamp', 'valid')
                 return response
             except:
                 obj = None
@@ -106,11 +128,13 @@ def set_cookie(response, key, value, days_expire=7):
         expires=expires,
     )
 
+
 def setcookie(request):
     response = HttpResponse("Cookie Set")
     response.set_cookie('java-tutorial', 'javatpoint.com')
     return response
-def getcookie(request):
-    tutorial  = request.COOKIES['java-tutorial']
-    return HttpResponse("java tutorials @: "+  tutorial);
 
+
+def getcookie(request):
+    tutorial = request.COOKIES['java-tutorial']
+    return HttpResponse("java tutorials @: " + tutorial);
