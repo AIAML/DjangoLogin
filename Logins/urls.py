@@ -3,6 +3,7 @@ from django.conf.urls import url
 from .views import (
     LoginView,RegisterView,MainPageView
 )
+
 app_name = "Logins"
 urlpatterns = [
     path('login/', LoginView.as_view(), name="register"),
