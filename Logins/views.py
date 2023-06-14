@@ -10,12 +10,20 @@ import datetime
 def members(request):
     template_name = "members.html"
     context = {}
-
+    all = Loginmodels.objects.all().values()
+    context = {'all':all}
     template = loader.get_template(template_name)
     # return HttpResponse(template.render())
     return render(request, template_name, context)
 
-
+def details(request,id):
+    template_name = "details.html"
+    context = {}
+    all = Loginmodels.objects.get(id=id)
+    context = {'all':all}
+    template = loader.get_template(template_name)
+    # return HttpResponse(template.render())
+    return render(request, template_name, context)
 
 
 

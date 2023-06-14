@@ -11,4 +11,5 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name="register"),
     path('mainpage/', MainPageView.as_view(), name="main"),
     path('members/',views.members, name="members"),
+    path('members/details/<int:id>',views.details, name="members_details"),
 ]
