@@ -8,3 +8,4 @@ class Loginmodels(models.Model):
     password = models.TextField(max_length=120, null=False)
     email = models.TextField(max_length=120, null=False)
     fullname = models.TextField(max_length=120, null=True)
+    address = models.TextField(max_length=255, null=True)

@@ -4,7 +4,21 @@ from django.http import HttpResponse
 from .forms import *
 from .models import Loginmodels
 from http import cookies
+from django.template import loader
 import datetime
+
+def members(request):
+    template_name = "members.html"
+    context = {}
+
+    template = loader.get_template(template_name)
+    # return HttpResponse(template.render())
+    return render(request, template_name, context)
+
+
+
+
+
 
 
 class LoginoutView(View):
