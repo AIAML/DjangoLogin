@@ -9,6 +9,7 @@ import datetime
 
 class LoginoutView(View):
     template_name = "Login_page.html"
+
     def get(self, request, *args, **kwargs):
         response = redirect('/login/')
         set_cookie(response, 'login_stamp', 'valid', -1)
@@ -21,7 +22,6 @@ class LoginView(View):
     def get(self, request, *args, **kwargs):
         context = {}
         try:
-            print("test")
             print(request.COOKIES.get('login_stamp'))
             if request.COOKIES.get('login_stamp') == "valid":
                 response = redirect('/mainpage/')
