@@ -159,3 +159,4 @@ def setcookie(request):
 def getcookie(request):
     tutorial = request.COOKIES['java-tutorial']
     return HttpResponse("java tutorials @: " + tutorial);
+
